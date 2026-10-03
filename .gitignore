@@ -7,3 +7,5 @@ demo.mp4
 build/
 dist/
 *.spec
+# archivos temporales de Word mientras un documento esta abierto
+~$*
