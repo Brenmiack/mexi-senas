@@ -120,7 +120,9 @@ Para estudiar el proyecto: [docs/guia_de_estudio.md](docs/guia_de_estudio.md).
 
 Registro completo de prompts: [docs/bitacora_prompts.md](docs/bitacora_prompts.md).
 
-- **Código inicial** (`common.py` y los scripts 01–04): [indicar de dónde salió: lo dio el profesor / lo generó una IA (cuál)].
+- **Código inicial** (`common.py`, los scripts 01–04, el primer README y `requirements.txt`; commit `5b48aec`):
+  generado por una IA ([indicar cuál: ChatGPT, Claude, Gemini...]) antes de empezar este registro.
+  Su prompt está en la fila 0 de la bitácora.
 - **Generado por Claude** (Claude Code, modelo Opus 5.5, 2 oct 2026): todos los cambios al código inicial y los archivos nuevos.
   - Cada persona guarda sus muestras en `data/<persona>.csv`; el nombre se normaliza (minúsculas, sin espacios).
   - Imagen en espejo por defecto en todos los scripts (`--sin-espejo` para desactivarla).
