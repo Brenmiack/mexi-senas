@@ -3,3 +3,7 @@ __pycache__/
 *.pyc
 captura_mano.png
 demo.mp4
+# salida de construir_exe.bat (el .exe se sube a GitHub Releases, no al repositorio)
+build/
+dist/
+*.spec

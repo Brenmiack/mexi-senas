@@ -1,5 +1,9 @@
+# Python 3.11 (sirven 3.10 y 3.12; NO 3.13 ni 3.14: mediapipe 0.10.14 no se instala ahi)
 mediapipe==0.10.14
-numpy<2
-scikit-learn
-joblib
-matplotlib
+opencv-contrib-python==4.11.0.86
+numpy==1.26.4
+scikit-learn==1.9.1
+joblib==1.6.0
+matplotlib==3.11.2
+# solo para generar el .exe (construir_exe.bat)
+pyinstaller==6.22.3

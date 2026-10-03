@@ -5,6 +5,9 @@ Convertimos esos puntos en 63 numeros (x, y, z de cada punto) normalizados para 
 no importe donde este la mano en la imagen ni que tan cerca este de la camara.
 Ese vector de 63 numeros es lo que aprende el clasificador.
 """
+import os
+import sys
+
 import cv2
 import numpy as np
 import mediapipe as mp
@@ -16,7 +19,23 @@ NUM_PUNTOS = 21
 NUM_CARACTERISTICAS = NUM_PUNTOS * 3
 
 
+def ruta_recurso(relativa):
+    """Ruta de un archivo del proyecto (por ejemplo el modelo) que funciona igual en Python y en el .exe.
+
+    Dentro del .exe, PyInstaller descomprime los archivos en una carpeta temporal (sys._MEIPASS).
+    Fuera del .exe, la ruta se toma desde la carpeta del proyecto, sin importar desde donde se ejecute.
+    """
+    base = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base, relativa)
+
+
 def crear_detector():
+    """Crea el detector de manos de MediaPipe, configurado para video y una sola mano.
+
+    static_image_mode=False: entre cuadros sigue la mano ya encontrada (mas rapido que buscarla cada vez).
+    min_detection_confidence: que tan seguro debe estar MediaPipe para decir "aqui hay una mano".
+    min_tracking_confidence: por debajo de este valor deja de seguirla y la vuelve a buscar.
+    """
     return mp_hands.Hands(
         static_image_mode=False,
         max_num_hands=1,
@@ -27,12 +46,31 @@ def crear_detector():
 
 
 def abrir_fuente(fuente):
-    """fuente: '0' para la webcam, o la ruta de un video (por ejemplo uno grabado con el celular)."""
-    origen = int(fuente) if str(fuente).isdigit() else fuente
-    cap = cv2.VideoCapture(origen)
+    """Abre la webcam o un video. Devuelve (captura, es_video).
+
+    fuente: '0' para la webcam (o '1', '2'... si hay varias camaras), o la ruta de un video
+    (por ejemplo uno grabado con el celular).
+    """
+    es_camara = str(fuente).isdigit()
+    cap = cv2.VideoCapture(int(fuente) if es_camara else fuente)
     if not cap.isOpened():
-        raise SystemExit(f"No pude abrir la fuente de video: {fuente}")
-    return cap, not str(fuente).isdigit()
+        if es_camara:
+            raise SystemExit(
+                "No pude abrir la camara. Posibles causas:\n"
+                "  - Otro programa la esta usando (Zoom, Teams, Meet, la app Camara): cierralo.\n"
+                "  - Windows no le da permiso: Configuracion > Privacidad y seguridad > Camara.\n"
+                "  - La computadora no tiene camara, o hay varias: prueba con --fuente 1"
+            )
+        raise SystemExit(f"No pude abrir el video: {fuente}\nRevisa que la ruta y el nombre del archivo sean correctos.")
+    return cap, not es_camara
+
+
+def ventana_cerrada(nombre):
+    """True si el usuario cerro la ventana con la X.
+
+    Sin esta revision, OpenCV vuelve a abrir la ventana en el siguiente cuadro y parece que no se puede cerrar.
+    """
+    return cv2.getWindowProperty(nombre, cv2.WND_PROP_VISIBLE) < 1
 
 
 def detectar_mano(detector, frame_bgr):
@@ -61,6 +99,7 @@ def a_caracteristicas(mano, ancho, alto):
 
 
 def dibujar_mano(frame, mano):
+    """Dibuja sobre el cuadro los 21 puntos de la mano y las lineas que los unen (modifica el cuadro)."""
     mp_draw.draw_landmarks(frame, mano, mp_hands.HAND_CONNECTIONS)
 
 
