@@ -158,7 +158,7 @@ Registro completo de prompts: [docs/bitacora_prompts.md](docs/bitacora_prompts.m
 | PyInstaller (solo para generar el `.exe`) | 6.22.3 | GPL-2.0 con excepción que permite distribuir el programa generado | https://pyinstaller.org |
 
 - **Datos:** grabados por los integrantes del equipo con `02_recolectar.py`. No se usaron datasets externos.
-- **Seña:** [nombre de la seña] según [fuente: por ejemplo el diccionario DIELSEME, con enlace].
+- **Seña:** letra L del alfabeto manual de la LSM (índice hacia arriba y pulgar extendido), según [fuente: por ejemplo el diccionario DIELSEME, con enlace].
 - **Código:** ver "Uso de IA".
 
 ## Elegir la seña
