@@ -105,15 +105,15 @@ docs/bitacora_prompts.md
 | **Lun 12 oct** | **Entrega 3**: 04_Manual de usuario, 05_Nota de prueba, video demo |
 | **Mar 13 oct** | **Entrega 4**: presentación y 06_Bitácora de prompts y reflexión |
 
-## Equipo
+## Equipo: MEXI-SEÑAS
 
 | Rol | Integrante | Responsabilidad |
 |---|---|---|
-| Líder técnico | Paul Sahid Mendez Hernandez | Repositorio, entrenar el modelo final, generar y probar el `.exe`, demo en vivo |
-| Modelo | Oscar Garcia Marroquin | Interpretar métricas, experimentos de parámetros, video demo |
+| Líder técnico | Paul Sahid Méndez Hernández | Repositorio, entrenar el modelo final, generar y probar el `.exe`, demo en vivo |
+| Modelo | Oscar García Marroquín | Interpretar métricas, experimentos de parámetros, video demo |
 | Datos | Daniela Díaz López | Elegir las letras y su fuente, coordinar la grabación, manual de usuario |
-| QA (pruebas) | Leonardo Gonzalez Cuevas | Casos de prueba, informe QA, prueba con persona ajena |
-| Documentación | Kevin Zidam Valencia Velez | Documento del proyecto, bitácora, presentación |
+| QA (pruebas) | Leonardo González Cuevas | Casos de prueba, informe QA, prueba con persona ajena |
+| Documentación | Kevin Zidam Valencia Vélez | Documento del proyecto, bitácora, presentación |
 
 Qué tiene que hacer cada quien y cuándo: [docs/QUE_HACER.md](docs/QUE_HACER.md).
 Para estudiar el proyecto: [docs/guia_de_estudio.md](docs/guia_de_estudio.md).
