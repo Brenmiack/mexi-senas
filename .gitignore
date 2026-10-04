@@ -9,3 +9,5 @@ dist/
 *.spec
 # archivos temporales de Word mientras un documento esta abierto
 ~$*
+# videos de evidencia de 02_recolectar.py (pesan mucho y salen caras: van a Drive, no al repositorio)
+evidencia/
