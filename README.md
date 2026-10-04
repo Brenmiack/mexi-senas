@@ -1,10 +1,10 @@
 # Reconocedor de señas con visión artificial
 
 Proyecto del curso *Explorando las ramas de la IA* · Rama: **visión artificial**.
-La webcam reconoce en vivo una seña **estática** de Lengua de Señas Mexicana (LSM).
+La webcam reconoce en vivo cinco letras **estáticas** del alfabeto de la Lengua de Señas Mexicana (LSM): L, Y, V, W y C.
 
 Cómo funciona: MediaPipe saca 21 puntos de la mano en cada cuadro de video → los convertimos en 63 números
-→ un clasificador (Random Forest) decide qué seña es. **No necesita GPU**: todo corre en CPU.
+→ un clasificador (Random Forest) decide qué letra es (o «otra» si no es ninguna). **No necesita GPU**: todo corre en CPU.
 
 ## Usar el programa sin instalar nada (Windows)
 
@@ -47,19 +47,21 @@ lo tienen que usar todos, al grabar y en la demo; si no, el modelo ve la mano al
 
 ## Grabar datos
 
-Cada persona graba su seña y también ejemplos de `otra` (todo lo que NO es la seña):
+Cada persona graba las 5 letras y también ejemplos de `otra` (todo lo que NO es una de las letras):
 
 ```bash
-python 02_recolectar.py --persona ana --etiqueta L       # la seña elegida (el nombre que quieran)
-python 02_recolectar.py --persona ana --etiqueta otra    # mano abierta, puño, mano en reposo, otras posiciones
+.venv\Scripts\python.exe 02_recolectar.py --persona ana --etiqueta L     # luego Y, V, W y C
+.venv\Scripts\python.exe 02_recolectar.py --persona ana --etiqueta otra  # mano abierta, puño, relajada, índice solo, pulgar arriba, OK
 ```
 
 - Cada persona queda en su propio archivo: `data/ana.csv`. Así no chocan al subirlos a git.
 - Unas **300–400 muestras por persona y por etiqueta** (unos 30 segundos de grabación cada una).
-  Graben más o menos la misma cantidad de la seña y de `otra`.
+  Graben la misma cantidad de cada letra y de `otra`.
 - No son fotos: cada muestra es un cuadro de video convertido en 63 números. Los CSV no guardan
   imágenes ni rostros, por eso se pueden subir al repositorio.
-- Todos usan la misma mano (la derecha). Mientras graban, varíen distancia, ángulo, luz y fondo.
+- En `otra` no va ninguna de las 5 letras; la mano relajada, con los dedos estirados (si quedan curvos, parece una C).
+- Con webcam se guarda también un video de evidencia en `evidencia/` (no se sube al repositorio).
+- Todos usan la misma mano (la derecha): con la palma hacia la cámara, el pulgar de la L queda del lado izquierdo de la imagen. Mientras graban, varíen distancia, ángulo, luz y fondo.
 - Escriban en `--persona` su nombre de verdad: `03_entrenar.py` lo usa para probar el modelo con alguien que no vio.
 - Quien grabe con el celular puede procesar el video así:
   `python 02_recolectar.py --persona luis --etiqueta L --fuente video.mp4`
@@ -126,18 +128,19 @@ Registro completo de prompts: [docs/bitacora_prompts.md](docs/bitacora_prompts.m
 - **Generado por Claude** (Claude Code, modelo Opus 5.5, 2 oct 2026): todos los cambios al código inicial y los archivos nuevos.
   - Cada persona guarda sus muestras en `data/<persona>.csv`; el nombre se normaliza (minúsculas, sin espacios).
   - Imagen en espejo por defecto en todos los scripts (`--sin-espejo` para desactivarla).
-  - Cuenta regresiva de 3 segundos antes de grabar; instrucciones de teclas dentro de las ventanas.
+  - Cuenta regresiva de 3 segundos antes de grabar; instrucciones de teclas dentro de las ventanas;
+    video de evidencia automático de cada grabación.
   - Las ventanas se pueden cerrar con la X (antes OpenCV las volvía a abrir).
   - Mensajes claros cuando la cámara no abre, falta el modelo o el video no existe; en el `.exe`, la consola
     espera a que se presione Enter para que se alcance a leer el error.
-  - La demo muestra la probabilidad de la seña anunciada (antes podía mostrar la de otra clase).
+  - La demo muestra la probabilidad de la letra anunciada (antes podía mostrar la de otra clase).
   - La demo predice con un solo hilo (`n_jobs = 1`): ~8 ms por cuadro en vez de ~27 ms.
   - `03_entrenar.py` guarda `models/metricas.txt` y la matriz de confusión de la prueba con personas no vistas,
     e ignora filas dañadas de los CSV.
   - `common.ruta_recurso()` para que la demo encuentre el modelo dentro del `.exe`.
   - Docstrings de todas las funciones, `construir_exe.bat`, versiones fijas en `requirements.txt`,
     este README y los documentos de `docs/`.
-- **Hecho por el equipo:** elección de la seña y su fuente, grabación de los datos (`data/*.csv`), entrenamiento
+- **Hecho por el equipo:** elección de las letras y su fuente, grabación de los datos (`data/*.csv`), entrenamiento
   del modelo final, pruebas con personas reales, prueba con persona ajena, video y presentación.
 - **Modificado por el equipo** (llenar si cambian algo del código o de los documentos generados):
 
@@ -158,15 +161,17 @@ Registro completo de prompts: [docs/bitacora_prompts.md](docs/bitacora_prompts.m
 | PyInstaller (solo para generar el `.exe`) | 6.22.3 | GPL-2.0 con excepción que permite distribuir el programa generado | https://pyinstaller.org |
 
 - **Datos:** grabados por los integrantes del equipo con `02_recolectar.py`. No se usaron datasets externos.
-- **Seña:** letra L del alfabeto manual de la LSM (índice hacia arriba y pulgar extendido), según [fuente: por ejemplo el diccionario DIELSEME, con enlace].
+- **Señas:** letras L, Y, V, W y C del alfabeto manual de la LSM, según [fuente: por ejemplo el diccionario DIELSEME, con enlace].
 - **Código:** ver "Uso de IA".
 
-## Elegir la seña
+## Las señas elegidas
 
-Elijan una seña **estática** (sin movimiento), con la mano bien visible y que se distinga de una mano abierta o un puño.
-Eviten letras con movimiento (J, Ñ, Z) y las que se parecen a una mano abierta o a un puño (A, B, E, S).
-Buenas candidatas: L, V o Y. Verifiquen cómo se hace en una fuente de LSM (por ejemplo el diccionario DIELSEME)
-o con alguien de la comunidad sorda, y anoten la fuente en el documento del proyecto.
+Se eligieron cinco letras **estáticas** y muy distintas entre sí: **L** (índice y pulgar extendidos), **Y** (pulgar y meñique), **V** (índice y medio separados), **W** (índice, medio y anular separados) y **C** (mano curva).
+Se descartaron las letras con movimiento (J, K, Ñ, Q, X, Z), porque el programa analiza un cuadro a la vez, y las que se
+parecen entre sí o a una mano abierta o un puño (A, B, E, M, N, S, T; U, R, H). Verifiquen cada letra en una fuente de LSM
+(por ejemplo el diccionario DIELSEME) y anoten la fuente en el documento del proyecto.
 
-Para agregar más señas no hay que cambiar código: se graba una etiqueta nueva y se re-entrena.
-Háganlo solo si la demo ya funciona bien con personas que no grabaron datos, y elijan señas muy distintas entre sí.
+Para agregar más letras no hay que cambiar código: se graba una etiqueta nueva y se re-entrena.
+Revisen después en `models/metricas.txt` que la letra nueva no se confunda con las demás.
+
+Resultados con 4 integrantes (3 oct): 99.5 % con muestras al azar y **92.0 % con personas que el modelo no vio**.

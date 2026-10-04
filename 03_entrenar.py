@@ -71,6 +71,8 @@ def guardar_matriz(matriz, clases, titulo, ruta_png):
     fig, ax = plt.subplots(figsize=(5, 4))
     ConfusionMatrixDisplay(matriz, display_labels=clases).plot(ax=ax, cmap="Blues", colorbar=False)
     ax.set_title(titulo)
+    ax.set_xlabel("Lo que dijo el modelo")
+    ax.set_ylabel("Etiqueta real")
     fig.tight_layout()
     fig.savefig(ruta_png, dpi=150)
     plt.close(fig)
@@ -153,10 +155,10 @@ def main():
     print(f"Metricas guardadas en {ruta_metricas}")
 
     try:
-        guardar_matriz(matriz, clases, "Matriz de confusion (prueba al azar)",
+        guardar_matriz(matriz, clases, "Matriz de confusión (prueba al azar)",
                        os.path.join(carpeta, "matriz_confusion.png"))
         if reales:
-            guardar_matriz(matriz_honesta, clases, "Matriz de confusion (personas no vistas)",
+            guardar_matriz(matriz_honesta, clases, "Matriz de confusión (personas no vistas)",
                            os.path.join(carpeta, "matriz_confusion_honesta.png"))
         print(f"Graficas guardadas en {carpeta} (sirven para la presentacion)")
     except ImportError:
