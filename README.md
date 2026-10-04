@@ -109,11 +109,11 @@ docs/bitacora_prompts.md
 
 | Rol | Integrante | Responsabilidad |
 |---|---|---|
-| Líder técnico | [nombre] | Repositorio, entrenar el modelo final, generar y probar el `.exe`, demo en vivo |
-| Modelo | [nombre] | Interpretar métricas, experimentos de parámetros, video demo |
-| Datos | [nombre] | Elegir la seña y su fuente, coordinar la grabación, manual de usuario |
-| QA (pruebas) | [nombre] | Casos de prueba, informe QA, prueba con persona ajena |
-| Documentación | [nombre] | Documento del proyecto, bitácora, presentación |
+| Líder técnico | Paul Sahid Mendez Hernandez | Repositorio, entrenar el modelo final, generar y probar el `.exe`, demo en vivo |
+| Modelo | Oscar Garcia Marroquin | Interpretar métricas, experimentos de parámetros, video demo |
+| Datos | Daniela Díaz López | Elegir las letras y su fuente, coordinar la grabación, manual de usuario |
+| QA (pruebas) | Leonardo Gonzalez Cuevas | Casos de prueba, informe QA, prueba con persona ajena |
+| Documentación | Kevin Zidam Valencia Velez | Documento del proyecto, bitácora, presentación |
 
 Qué tiene que hacer cada quien y cuándo: [docs/QUE_HACER.md](docs/QUE_HACER.md).
 Para estudiar el proyecto: [docs/guia_de_estudio.md](docs/guia_de_estudio.md).
