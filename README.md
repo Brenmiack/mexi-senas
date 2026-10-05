@@ -161,7 +161,7 @@ Registro completo de prompts: [docs/bitacora_prompts.md](docs/bitacora_prompts.m
 | PyInstaller (solo para generar el `.exe`) | 6.22.3 | GPL-2.0 con excepción que permite distribuir el programa generado | https://pyinstaller.org |
 
 - **Datos:** grabados por los integrantes del equipo con `02_recolectar.py`. No se usaron datasets externos.
-- **Señas:** letras L, Y, V, W y C del alfabeto manual de la LSM, según [fuente: por ejemplo el diccionario DIELSEME, con enlace].
+- **Señas:** letras L, Y, V, W y C del alfabeto manual de la LSM, según el DIELSEME, Diccionario Español–Lengua de Señas Mexicana (María Teresa Calvo Hernández, SEP, 2004; versión 2014): https://libreacceso.org/bibliografia/bibliografias-discapacidad-auditiva/dielseme-diccionario-espanol-lengua-de-senas-mexicana-sep/
 - **Código:** ver "Uso de IA".
 
 ## Las señas elegidas
