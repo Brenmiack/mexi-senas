@@ -8,7 +8,7 @@ Cómo funciona: MediaPipe saca 21 puntos de la mano en cada cuadro de video → 
 
 ## Usar el programa sin instalar nada (Windows)
 
-1. Descargar `ReconocedorSenas.zip` de la sección **Releases** de este repositorio.
+1. Descargar `ReconocedorSenas.zip` de la sección **Releases** de este repositorio (https://github.com/Brenmiack/mexi-senas/releases).
 2. Descomprimirlo y abrir `ReconocedorSenas.exe` (la primera vez tarda unos 25 segundos en abrir).
 3. Poner la mano frente a la cámara. Tecla `q` para salir.
 
