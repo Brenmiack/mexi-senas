@@ -42,6 +42,7 @@ class VideoEvidencia:
     """
 
     def __init__(self, ruta):
+        """Prepara el video; el archivo se crea hasta el primer cuadro, cuando ya se conoce su tamano."""
         self.ruta = ruta
         self.escritor = None
         self.siguiente = None
