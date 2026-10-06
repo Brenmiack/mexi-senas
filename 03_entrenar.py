@@ -1,13 +1,4 @@
-"""PASO 3 - Entrenar el clasificador (Random Forest) y medir que tan bien funciona.
 
-Lee todos los data/*.csv, entrena y guarda models/modelo.joblib.
-Si hay 2 o mas personas en los datos, tambien prueba con una persona que el modelo NO vio
-(esa es la cifra honesta; la de "muestras al azar" sale inflada porque los cuadros
-consecutivos de un video se parecen muchisimo).
-Todo lo que imprime se guarda tambien en models/metricas.txt, junto con las graficas
-de las matrices de confusion (sirven para los documentos y la presentacion).
-No necesita GPU: entrena en segundos con CPU.
-"""
 import argparse
 import csv
 import glob
