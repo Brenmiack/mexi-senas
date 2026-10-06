@@ -14,19 +14,7 @@ from common import abrir_fuente, crear_detector, detectar_mano, dibujar_mano, te
 VENTANA = "Probar mano"
 
 
-def main():
-    """Muestra la camara con los puntos de la mano, si se detecto o no, y los cuadros por segundo (FPS).
 
-    Los FPS indican que tan fluido corre: por debajo de ~10 la demo en vivo se sentira lenta.
-    """
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--fuente", default="0", help="0 = webcam, o ruta de un video")
-    ap.add_argument("--sin-espejo", dest="espejo", action="store_false", help="no voltear la imagen")
-    args = ap.parse_args()
-
-    cap, _ = abrir_fuente(args.fuente)
-    detector = crear_detector()
-    anterior = time.time()
 
     while True:
         ok, frame = cap.read()
