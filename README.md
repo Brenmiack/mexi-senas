@@ -84,11 +84,8 @@ construir_exe.bat       genera el .exe
 requirements.txt        librerías con su versión
 data/                   muestras de cada integrante (datos de prueba)
 models/                 modelo entrenado, metricas.txt y matrices de confusión
-docs/QUE_HACER.md       qué le toca a cada integrante y cuándo
-docs/guia_de_estudio.md preguntas y respuestas para la presentación tipo examen
-docs/guion_video.md     guion del video demo
-docs/entregables/       documentos para el profesor (01 a 05)
-docs/bitacora_prompts.md
+pruebas/                datos del caso de prueba con la mano izquierda (no se usan para entrenar)
+docs/bitacora_prompts.md  registro de los prompts usados con IA
 ```
 
 ## Calendario
@@ -115,9 +112,6 @@ docs/bitacora_prompts.md
 | QA (pruebas) | Leonardo González Cuevas | Casos de prueba, informe QA, prueba con persona ajena |
 | Documentación | Kevin Zidam Valencia Vélez | Documento del proyecto, bitácora, presentación |
 
-Qué tiene que hacer cada quien y cuándo: [docs/QUE_HACER.md](docs/QUE_HACER.md).
-Para estudiar el proyecto: [docs/guia_de_estudio.md](docs/guia_de_estudio.md).
-
 ## Uso de IA
 
 Registro completo de prompts: [docs/bitacora_prompts.md](docs/bitacora_prompts.md).
@@ -139,7 +133,7 @@ Registro completo de prompts: [docs/bitacora_prompts.md](docs/bitacora_prompts.m
     e ignora filas dañadas de los CSV.
   - `common.ruta_recurso()` para que la demo encuentre el modelo dentro del `.exe`.
   - Docstrings de todas las funciones, `construir_exe.bat`, versiones fijas en `requirements.txt`,
-    este README y los documentos de `docs/`.
+    este README y los borradores de los documentos de entrega (01 a 06).
 - **Hecho por el equipo:** elección de las letras y su fuente, grabación de los datos (`data/*.csv`), entrenamiento
   del modelo final, pruebas con personas reales, prueba con persona ajena, video y presentación.
 - **Modificado por el equipo** (llenar si cambian algo del código o de los documentos generados):

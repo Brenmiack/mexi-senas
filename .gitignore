@@ -11,3 +11,9 @@ dist/
 ~$*
 # videos de evidencia de 02_recolectar.py (pesan mucho y salen caras: van a Drive, no al repositorio)
 evidencia/
+# material interno del equipo: se comparte por Drive o WhatsApp, no va en el repositorio de entrega
+docs/para_cada_uno/
+docs/entregables/
+docs/QUE_HACER.md
+docs/guia_de_estudio.md
+docs/guion_video.md
