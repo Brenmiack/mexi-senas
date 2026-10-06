@@ -15,21 +15,28 @@ Si el modelo solo hubiera visto letras, a cualquier mano le asignaría la letra 
 
 Teclas (webcam):  ESPACIO = cuenta regresiva y grabar / pausar   q = salir
 """
-import argparse
-import csv
-import math
-import os
-import time
+import argparse #Permite pasar opciones desde terminal
+import csv      #para archivos csv (escribir filas en el archivo de las pruebas)
+import math     #se usa oara math.ceil en la cuenta regresiva xd
+import os       #maneja rutas y carpetaas
+import time     #medir segundos, especificamente en cuanta regresiva
 
-import cv2
+import cv2      #leer camara, mostrar ventanas y guardar videos, en si habilita OpenCV
 
 from common import (NUM_CARACTERISTICAS, a_caracteristicas, abrir_fuente, crear_detector, detectar_mano,
-                    dibujar_mano, texto, ventana_cerrada)
+                    dibujar_mano, texto, ventana_cerrada) #Importa herramientas de otro archivo del proyecto
 
+#NUM_CARACTERISTICAS	        Cantidad de números por muestra (63)
+#abrir_fuente(fuente)	        Abre webcam o video; devuelve (cap, es_video)
+#crear_detector()	            Crea el detector de manos
+#detectar_mano(detector, frame)	Devuelve los puntos de la mano, o None si no hay
+#a_caracteristicas(mano, ancho, alto)	Convierte los puntos en la lista de 63 números
+#dibujar_mano(frame, mano)	    Dibuja el esqueleto sobre la imagen
+#texto(...)	                    Escribe texto sobre la imagen
+#ventana_cerrada(nombre)	    Revisa si el usuario cerró la ventana con la X
 VENTANA = "Recolectar muestras"
 SEGUNDOS_CUENTA = 3
 FPS_VIDEO = 20
-
 
 class VideoEvidencia:
 
@@ -59,6 +66,20 @@ class VideoEvidencia:
 
 
 def main():
+    """
+    Argumentos de línea de comandos:
+
+    Argumento	    Para qué sirve o como sirve xd
+    --persona	    Quién graba (permite luego evaluar con personas que el modelo no vio)
+    --etiqueta	    Nombre de la clase (literal la etiqueta): L, otra, etc.
+    --fuente	    0 = webcam, o ruta a un video
+    --salida	    CSV de destino (por defecto data/<persona>.csv)
+    --max	        Máximo de muestras por corrida (400 tomas)
+    --cada	        Guarda 1 de cada N cuadros (2), para evitar muestras casi idénticas
+    --sin-espejo	Desactiva el volteo horizontal de la imagen  aplicado para el programa y que identifique señas de manera de espejo
+    --sin-video	    No guarda el video de evidencia
+    """
+
 
     ap = argparse.ArgumentParser()
     ap.add_argument("--persona", required=True, help="quien graba (sirve para evaluar con gente que el modelo no vio)")
