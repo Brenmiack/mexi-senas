@@ -1,42 +1,43 @@
-Entrenamiento: 2026-10-03 20:24
-Muestras por etiqueta: {'L': 1600, 'Y': 1600, 'V': 1600, 'W': 1600, 'C': 1600, 'otra': 1600}
-Muestras por persona:  {'daniela': 2400, 'kevin': 2400, 'oscar': 2400, 'paul': 2400}
+Entrenamiento: 2026-10-06 11:21
+Muestras por etiqueta: {'L': 2000, 'Y': 2000, 'V': 2000, 'W': 2000, 'C': 2000, 'otra': 2000}
+Muestras por persona:  {'daniela': 2400, 'kevin': 2400, 'leonardo': 2400, 'oscar': 2400, 'paul': 2400}
 
 == Prueba con muestras al azar (optimista) ==
-Precision: 99.5%
+Precision: 99.0%
               precision    recall  f1-score   support
 
-           C       0.99      1.00      1.00       320
-           L       1.00      1.00      1.00       320
-           V       0.99      1.00      1.00       320
-           W       1.00      0.99      1.00       320
-           Y       1.00      0.99      0.99       320
-        otra       0.99      0.99      0.99       320
+           C       1.00      1.00      1.00       400
+           L       0.99      0.99      0.99       400
+           V       0.99      0.98      0.99       400
+           W       1.00      0.98      0.99       400
+           Y       0.99      0.99      0.99       400
+        otra       0.97      0.98      0.97       400
 
-    accuracy                           1.00      1920
-   macro avg       1.00      1.00      1.00      1920
-weighted avg       1.00      1.00      1.00      1920
+    accuracy                           0.99      2400
+   macro avg       0.99      0.99      0.99      2400
+weighted avg       0.99      0.99      0.99      2400
 
 Matriz de confusion (filas = real, columnas = predicho): ['C', 'L', 'V', 'W', 'Y', 'otra']
-[[320   0   0   0   0   0]
- [  0 320   0   0   0   0]
- [  0   0 320   0   0   0]
- [  0   0   1 318   0   1]
- [  1   0   0   0 317   2]
- [  2   0   1   0   1 316]]
+[[400   0   0   0   0   0]
+ [  0 398   0   0   0   2]
+ [  0   0 394   1   0   5]
+ [  0   0   2 393   0   5]
+ [  0   0   1   0 397   2]
+ [  0   4   1   0   2 393]]
 
 == Prueba dejando a una persona fuera (la cifra honesta) ==
-  Probando con daniela: 92.8%  (2400 muestras)
-  Probando con kevin: 88.6%  (2400 muestras)
-  Probando con oscar: 89.2%  (2400 muestras)
-  Probando con paul: 97.6%  (2400 muestras)
-  Total con personas no vistas: 92.0%
+  Probando con daniela: 95.7%  (2400 muestras)
+  Probando con kevin: 88.2%  (2400 muestras)
+  Probando con leonardo: 83.0%  (2400 muestras)
+  Probando con oscar: 91.4%  (2400 muestras)
+  Probando con paul: 98.3%  (2400 muestras)
+  Total con personas no vistas: 91.3%
 Matriz de confusion (filas = real, columnas = predicho): ['C', 'L', 'V', 'W', 'Y', 'otra']
-[[1437    0    0    0    0  163]
- [   0 1436    2    2    1  159]
- [   1   11 1520    8    0   60]
- [   0    0   30 1546    0   24]
- [   2    0    0    0 1530   68]
- [  98   43   37    8   47 1367]]
+[[1899    0    0    0    0  101]
+ [   0 1828    1    2    6  163]
+ [   0    4 1880   13    0  103]
+ [   0    0   30 1872    0   98]
+ [   3    1   23    0 1909   64]
+ [  96   99   93   87   55 1570]]
 
 Modelo guardado en models/modelo.joblib

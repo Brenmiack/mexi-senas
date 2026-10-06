@@ -140,7 +140,8 @@ Registro completo de prompts: [docs/bitacora_prompts.md](docs/bitacora_prompts.m
 
 | Integrante | Archivo | Qué cambió |
 |---|---|---|
-| | | |
+| Daniela Díaz López | `02_recolectar.py` | Descripción del script con sus palabras, comentarios en los `import` y tabla de argumentos en `main()` |
+| Leonardo González Cuevas | `04_demo.py` | «sena» por «seña» en la descripción y los comentarios (los textos de la ventana siguen sin ñ porque OpenCV no la dibuja: ver ER-12) |
 
 ## Créditos y licencias
 
@@ -168,4 +169,5 @@ parecen entre sí o a una mano abierta o un puño (A, B, E, M, N, S, T; U, R, H)
 Para agregar más letras no hay que cambiar código: se graba una etiqueta nueva y se re-entrena.
 Revisen después en `models/metricas.txt` que la letra nueva no se confunda con las demás.
 
-Resultados con 4 integrantes (3 oct): 99.5 % con muestras al azar y **92.0 % con personas que el modelo no vio**.
+Resultados con los 5 integrantes (6 oct): 99.0 % con muestras al azar y **91.3 % con personas que el modelo no vio**
+(de 83.0 % con Leonardo a 98.3 % con Paul; detalle en `models/metricas.txt`).
