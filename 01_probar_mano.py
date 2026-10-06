@@ -1,9 +1,4 @@
-"""PASO 1 - Probar que MediaPipe ve tu mano.
 
-Abre la webcam y dibuja los 21 puntos de la mano.
-  s = guardar captura (captura_mano.png)   q = salir (o cerrar la ventana)
-Sirve para comprobar que la instalacion quedo bien antes de grabar datos.
-"""
 import argparse
 import time
 
