@@ -1,11 +1,11 @@
-"""PASO 4 - Demo en vivo: la camara ve la mano y dice que sena es.
+"""PASO 4 - Demo en vivo: la camara ve la mano y dice que seÑa es.
 
-  q = salir (o cerrar la ventana)
+q = salir (o cerrar la ventana)
 Para grabar el video de la demo (entregable):  python 04_demo.py --grabar demo.mp4
 Este mismo script es el programa del .exe (ver construir_exe.bat).
 """
 # Va antes de los imports porque cargar MediaPipe tarda: asi la ventana no parece colgada
-print("Cargando el reconocedor de senas... (la primera vez puede tardar hasta 30 segundos)")
+print("Cargando el reconocedor de señas... (la primera vez puede tardar hasta 30 segundos)")
 
 import argparse
 import os
@@ -19,11 +19,10 @@ import joblib
 from common import (a_caracteristicas, abrir_fuente, crear_detector, detectar_mano, dibujar_mano, ruta_recurso,
                     texto, ventana_cerrada)
 
-VENTANA = "Reconocedor de senas"
-
+VENTANA = "Reconocedor de señas"
 
 def main():
-    """Abre la camara y en cada cuadro muestra que sena ve el modelo.
+    """Abre la camara y en cada cuadro muestra que seña ve el modelo.
 
     Cada cuadro con mano se convierte en 63 numeros y el modelo da la probabilidad de cada etiqueta.
     Si la mas alta no llega al --umbral, el cuadro cuenta como "?" (incierto). Lo que se muestra
@@ -32,8 +31,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--modelo", default=ruta_recurso("models/modelo.joblib"))
     ap.add_argument("--fuente", default="0", help="0 = webcam, o ruta de un video")
-    ap.add_argument("--umbral", type=float, default=0.7, help="confianza minima para afirmar una sena")
-    ap.add_argument("--negativa", default="otra", help="etiqueta que significa 'ninguna sena'")
+    ap.add_argument("--umbral", type=float, default=0.7, help="confianza minima para afirmar una seña")
+    ap.add_argument("--negativa", default="otra", help="etiqueta que significa 'ninguna seña'")
     ap.add_argument("--grabar", default=None, help="guardar la demo en un video, por ejemplo demo.mp4")
     ap.add_argument("--sin-espejo", dest="espejo", action="store_false", help="no voltear la imagen")
     ap.add_argument("--sin-ventana", action="store_true", help="no abrir ventana (para pruebas)")
@@ -75,11 +74,11 @@ def main():
             if decision == "?":
                 texto(frame, "Incierto", (20, 50), (0, 255, 255), 1.2)
             elif decision == args.negativa:
-                texto(frame, "Ninguna sena", (20, 50), (200, 200, 200), 1.2)
+                texto(frame, "Ninguna seña", (20, 50), (200, 200, 200), 1.2)
             else:
-                # La probabilidad de la sena que se anuncia (no la de "mejor": en este cuadro puede ser otra)
+                # La probabilidad de la seña que se anuncia (no la de "mejor": en este cuadro puede ser otra)
                 confianza = probas[clases.index(decision)]
-                texto(frame, f"Sena: {decision}  ({confianza:.0%})", (20, 50), (0, 255, 0), 1.2)
+                texto(frame, f"seña: {decision}  ({confianza:.0%})", (20, 50), (0, 255, 0), 1.2)
         texto(frame, "q = salir", (20, alto - 20), (255, 255, 255), 0.6, 1)
 
         if args.grabar:
