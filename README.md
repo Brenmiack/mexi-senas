@@ -117,8 +117,8 @@ docs/bitacora_prompts.md  registro de los prompts usados con IA
 Registro completo de prompts: [docs/bitacora_prompts.md](docs/bitacora_prompts.md).
 
 - **Código inicial** (`common.py`, los scripts 01–04, el primer README y `requirements.txt`; commit `5b48aec`):
-  generado por Claude antes de empezar este registro. Su prompt (reconstruido, porque no se conservó
-  el original) está en la fila 0 de la bitácora.
+  generado por Claude (claude.ai) el 30 de septiembre, a partir de la investigación inicial de Leonardo. Sus prompts
+  originales están en las filas I-1 a I-10 y 0 a 0.3 de la bitácora.
 - **Generado por Claude** (Claude Code, modelo Opus 5.5, 2 oct 2026): todos los cambios al código inicial y los archivos nuevos.
   - Cada persona guarda sus muestras en `data/<persona>.csv`; el nombre se normaliza (minúsculas, sin espacios).
   - Imagen en espejo por defecto en todos los scripts (`--sin-espejo` para desactivarla).
