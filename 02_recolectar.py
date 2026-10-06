@@ -1,22 +1,19 @@
 """PASO 2 - Recolectar muestras.
 
+(este script es el paso dos del proyecto)
+Sirve para crear el dataset con el que se entrenara el modelo de datoos...
 Cada cuadro donde se ve la mano se guarda como una fila en data/<persona>.csv
 (solo numeros de los puntos, NO se guardan fotos ni rostros).
 Cada persona tiene su propio archivo para que no choquen al subirlos a git.
 
-Con solo UNA sena necesitas DOS etiquetas:
-  --etiqueta L      la sena que quieren reconocer (el nombre que quieran)
+Con solo UNA seña necesitas DOS etiquetas:
+  --etiqueta L      la seña que quieren reconocer (el nombre que quieran)
   --etiqueta otra   cualquier otra cosa: mano abierta, puno, otras senas, mano en reposo...
-Sin la etiqueta "otra" el modelo diria "es la sena" siempre.
-
-Ejemplos:
-  python 02_recolectar.py --persona ana --etiqueta L
-  python 02_recolectar.py --persona ana --etiqueta otra
-  python 02_recolectar.py --persona luis --etiqueta L --fuente video_celular.mp4   (sin ventana, automatico)
+Sin la etiqueta "otra" el modelo diria "es la seña" siempre, el poner la etiqueta otra permite tambien indentificar 
+todo lo que NO es una de las 5 letras: mano abierta, puño, mano relajada, índice solo, pulgar arriba, OK.
+Si el modelo solo hubiera visto letras, a cualquier mano le asignaría la letra más parecida.
 
 Teclas (webcam):  ESPACIO = cuenta regresiva y grabar / pausar   q = salir
-Con webcam tambien se guarda un video de evidencia en evidencia/ (--sin-video para no guardarlo).
-Tips: cambia un poco la distancia, el angulo, la luz y el fondo mientras grabas.
 """
 import argparse
 import csv
@@ -35,11 +32,6 @@ FPS_VIDEO = 20
 
 
 class VideoEvidencia:
-    """Guarda en un .mp4 lo que se ve en la ventana mientras se graba (evidencia del proceso).
-
-    La deteccion de la mano no siempre corre a la misma velocidad, asi que cada cuadro se escribe
-    las veces necesarias para que el video dure lo mismo que la grabacion real.
-    """
 
     def __init__(self, ruta):
         """Prepara el video; el archivo se crea hasta el primer cuadro, cuando ya se conoce su tamano."""
@@ -67,12 +59,7 @@ class VideoEvidencia:
 
 
 def main():
-    """Graba muestras de una etiqueta para una persona y las agrega a su CSV.
 
-    Cada fila del CSV es: persona, etiqueta, y los 63 numeros de a_caracteristicas().
-    Si el archivo ya existe, las filas nuevas se agregan al final (no se borra lo anterior).
-    Con webcam, al presionar ESPACIO hay una cuenta regresiva para acomodar la mano antes de grabar.
-    """
     ap = argparse.ArgumentParser()
     ap.add_argument("--persona", required=True, help="quien graba (sirve para evaluar con gente que el modelo no vio)")
     ap.add_argument("--etiqueta", required=True, help="por ejemplo: L  u  otra")
