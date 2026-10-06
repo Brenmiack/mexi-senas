@@ -49,3 +49,18 @@ def main():
         texto(frame, "s = guardar captura    q = salir", (20, alto - 20), (255, 255, 255), 0.6, 1)
 
       
+        cv2.imshow(VENTANA, frame)
+        tecla = cv2.waitKey(1) & 0xFF
+        if tecla == ord("q") or ventana_cerrada(VENTANA):
+            break
+        if tecla == ord("s"):
+            cv2.imwrite("captura_mano.png", frame)
+            print("Captura guardada: captura_mano.png")
+
+    cap.release()
+    cv2.destroyAllWindows()
+
+
+if __name__ == "__main__":
+    main()
+
