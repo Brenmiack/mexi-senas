@@ -1,20 +1,4 @@
-"""PASO 2 - Recolectar muestras.
 
-(este script es el paso dos del proyecto)
-Sirve para crear el dataset con el que se entrenara el modelo de datoos...
-Cada cuadro donde se ve la mano se guarda como una fila en data/<persona>.csv
-(solo numeros de los puntos, NO se guardan fotos ni rostros).
-Cada persona tiene su propio archivo para que no choquen al subirlos a git.
-
-Con solo UNA seña necesitas DOS etiquetas:
-  --etiqueta L      la seña que quieren reconocer (el nombre que quieran)
-  --etiqueta otra   cualquier otra cosa: mano abierta, puno, otras senas, mano en reposo...
-Sin la etiqueta "otra" el modelo diria "es la seña" siempre, el poner la etiqueta otra permite tambien indentificar 
-todo lo que NO es una de las 5 letras: mano abierta, puño, mano relajada, índice solo, pulgar arriba, OK.
-Si el modelo solo hubiera visto letras, a cualquier mano le asignaría la letra más parecida.
-
-Teclas (webcam):  ESPACIO = cuenta regresiva y grabar / pausar   q = salir
-"""
 import argparse
 import csv
 import math
