@@ -1,11 +1,3 @@
-"""PASO 4 - Demo en vivo: la camara ve la mano y dice que sena es.
-
-  q = salir (o cerrar la ventana)
-Para grabar el video de la demo (entregable):  python 04_demo.py --grabar demo.mp4
-Este mismo script es el programa del .exe (ver construir_exe.bat).
-"""
-# Va antes de los imports porque cargar MediaPipe tarda: asi la ventana no parece colgada
-print("Cargando el reconocedor de senas... (la primera vez puede tardar hasta 30 segundos)")
 
 import argparse
 import os
