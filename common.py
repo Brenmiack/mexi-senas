@@ -30,7 +30,12 @@ def ruta_recurso(relativa):
 
 
 def crear_detector():
-    
+    """Crea el detector de manos de MediaPipe, configurado para video y una sola mano.
+
+    static_image_mode=False: entre cuadros sigue la mano ya encontrada (mas rapido que buscarla cada vez).
+    min_detection_confidence: que tan seguro debe estar MediaPipe para decir "aqui hay una mano".
+    min_tracking_confidence: por debajo de este valor deja de seguirla y la vuelve a buscar.
+    """
     return mp_hands.Hands(
         static_image_mode=False,
         max_num_hands=1,
