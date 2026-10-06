@@ -4,7 +4,18 @@ Abre la webcam y dibuja los 21 puntos de la mano.
   s = guardar captura (captura_mano.png)   q = salir (o cerrar la ventana)
 Sirve para comprobar que la instalacion quedo bien antes de grabar datos.
 """
+import argparse
+import time
 
+import cv2
+
+from common import abrir_fuente, crear_detector, detectar_mano, dibujar_mano, texto, ventana_cerrada
+
+VENTANA = "Probar mano"
+
+
+def main():
+    """Muestra la camara con los puntos de la mano, si se detecto o no, y los cuadros por segundo (FPS).
 
     Los FPS indican que tan fluido corre: por debajo de ~10 la demo en vivo se sentira lenta.
     """
