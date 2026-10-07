@@ -1,10 +1,9 @@
 """PASO 2 - Recolectar muestras.
 
 (este script es el paso dos del proyecto)
-Sirve para crear el dataset con el que se entrenara el modelo de datoos...
+Sirve para crear el dataset con el que se entrenara el modelo de datos...
 Cada cuadro donde se ve la mano se guarda como una fila en data/<persona>.csv
 (solo numeros de los puntos, NO se guardan fotos ni rostros).
-Cada persona tiene su propio archivo para que no choquen al subirlos a git.
 
 Con solo UNA seña necesitas DOS etiquetas:
   --etiqueta L      la seña que quieren reconocer (el nombre que quieran)
@@ -17,9 +16,9 @@ Teclas (webcam):  ESPACIO = cuenta regresiva y grabar / pausar   q = salir
 """
 import argparse #Permite pasar opciones desde terminal
 import csv      #para archivos csv (escribir filas en el archivo de las pruebas)
-import math     #se usa oara math.ceil en la cuenta regresiva xd
-import os       #maneja rutas y carpetaas
-import time     #medir segundos, especificamente en cuanta regresiva
+import math     #se usa para math.ceil en la cuenta regresiva
+import os       #maneja rutas y carpetas
+import time     #medir segundos, especificamente en cuenta regresiva
 
 import cv2      #leer camara, mostrar ventanas y guardar videos, en si habilita OpenCV
 
@@ -39,7 +38,8 @@ SEGUNDOS_CUENTA = 3
 FPS_VIDEO = 20
 
 class VideoEvidencia:
-
+  #Guarda en un .mp4 lo que se graba (eviencia del proceso)
+  #La deteccion de mano no siempre es a la misma velocidad asi que cada cuadro se escribe las veces necesarias
     def __init__(self, ruta):
         """Prepara el video; el archivo se crea hasta el primer cuadro, cuando ya se conoce su tamano."""
         self.ruta = ruta
@@ -69,7 +69,7 @@ def main():
     """
     Argumentos de línea de comandos:
 
-    Argumento	    Para qué sirve o como sirve xd
+    Argumento	    Para qué sirve o como sirve
     --persona	    Quién graba (permite luego evaluar con personas que el modelo no vio)
     --etiqueta	    Nombre de la clase (literal la etiqueta): L, otra, etc.
     --fuente	    0 = webcam, o ruta a un video
